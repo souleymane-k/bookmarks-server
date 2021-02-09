@@ -53,20 +53,20 @@ const bodyParser = express.json()
         bookmarks.push(bookmark);
 
 
-    //Finally, log the card creation and send a response including a location header.
+    //Finally, log the Bookmark creation and send a response including a location header.
 
-        logger.info(`Card with id ${id} created`);
+        logger.info(`Bookmark with id ${id} created`);
 
           res
             .status(201)
-            .location(`http://localhost:8000/card/${id}`)
+            .location(`http://localhost:8001/bookmark/${id}`)
             .json(bookmark);
 
   });
 
 
 bookmarksRouter
-     .route('bookmarks/:id')
+     .route('/bookmarks/:id')
      .get((req, res)=>{
     const {id} = req.parasms;
     const bookmark = bookmarks.find(b =>b.id == id);
@@ -86,10 +86,10 @@ bookmarksRouter
     const bookmarkIndex = bookmarks.findIndex(b => b.id == id);
 
     if(bookmarkIndex === -1){
-      logger.error(`List with id ${id} not found`);
+      logger.error(`Bookmar with id ${id} not found`);
       return res
         .status(404)
-        .send('Not Found');
+        .send('Bookmark Not Found');
     }
     //remove bookmark
     //assume bookmarkIds are not duplicated in the cardIds array
