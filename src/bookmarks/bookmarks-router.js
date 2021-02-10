@@ -68,7 +68,7 @@ const bodyParser = express.json()
 bookmarksRouter
      .route('/bookmarks/:id')
      .get((req, res)=>{
-    const {id} = req.parasms;
+    const {id} = req.params;
     const bookmark = bookmarks.find(b =>b.id == id);
 
     //find the bookmarks
@@ -82,24 +82,24 @@ bookmarksRouter
   })
 
   .delete((req, res)=>{
-    const {id} = req.parasms;
-    const bookmarkIndex = bookmarks.findIndex(b => b.id == id);
+    const {id} = req.params;
+    const bookmarkIndex = bookmarks.findIndex(b => b.id === id);
 
     if(bookmarkIndex === -1){
-      logger.error(`Bookmar with id ${id} not found`);
+      logger.error(`Bookmar with id ${id} not found.`);
       return res
         .status(404)
         .send('Bookmark Not Found');
     }
-    //remove bookmark
+    //remove bookmark from bookmarks
     //assume bookmarkIds are not duplicated in the cardIds array
-   bookmarks.forEach(list=>{
-     const bookmarkIds = list.bookmarkIds.filter(bid => bid !==id);
-         list.bookmarkIds = bookmarkIds
-   });
+  //  bookmarks.forEach(bookmark=>{
+  //    const bookmarkIds = bookmark.bookmarkIds.filter(bid => bid !==id);
+  //        bookmark.bookmarkIds = bookmarkIds
+  //  });
    
     bookmarks.splice(bookmarkIndex, 1)
-    Logger.info(`Bookmark with id ${id} deleted.`)
+    logger.info(`Bookmark with id ${id} deleted.`)
     res
       .status(204)
       .end()
