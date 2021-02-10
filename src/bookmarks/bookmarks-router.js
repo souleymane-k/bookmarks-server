@@ -93,7 +93,7 @@ bookmarksRouter
     }
     //remove bookmark from bookmarks
     //assume bookmarkIds are not duplicated in the cardIds array
-  //  bookmarks.forEach(bookmark=>{
+  //  bookmarks.forEach(bookmark =>{
   //    const bookmarkIds = bookmark.bookmarkIds.filter(bid => bid !==id);
   //        bookmark.bookmarkIds = bookmarkIds
   //  });
