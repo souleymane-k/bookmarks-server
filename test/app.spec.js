@@ -8,6 +8,6 @@ describe('App', () => {
     return supertest(app)
       .get('/')
       .expect(200, 'Hello, bookmarks-server!')
-      //.set('Authorization', 'Bearer a15f9448-d074-4cdc-a932-cbb5355fd7c2')
+      .set('Authorization', 'Bearer a15f9448-d074-4cdc-a932-cbb5355fd7c2')
   })
 })
